@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>我的 GitHub 個人頁面</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: "Microsoft JhengHei", sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+    h1 { color: #333; }
+    .box { margin: 15px 0; padding: 10px; border: 1px solid #ddd; }
+  </style>
+</head>
+<body>
+  <h1>你好</h1>
+  <p>這一頁是Lab2 : Frontend Techniques 的作業</p>
+
+  <div class="box">
+    <button id="btn">顯示 / 隱藏 自我介紹 (jQuery)</button>
+    <p id="intro" style="display:none;">我學習了 Git、HTML、CSS、Ajax、jQuery，並且用 AI 幫我生範例。</p>
+  </div>
+
+  <div class="box">
+    <button id="load">載入示範資料 (Ajax + JSON)</button>
+    <pre id="result"></pre>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    $("#btn").on("click", function() {
+      $("#intro").slideToggle();
+    });
+
+    $("#load").on("click", function() {
+      $.getJSON("https://jsonplaceholder.typicode.com/todos/1", function(data) {
+        $("#result").text(JSON.stringify(data, null, 2));
+      });
+    });
+  </script>
+</body>
+</html>
+
